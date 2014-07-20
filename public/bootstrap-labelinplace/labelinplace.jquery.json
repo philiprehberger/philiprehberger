@@ -1,0 +1,39 @@
+{
+  "name": "labelinplace",
+  "title": "Label in Place",
+  "description": "A simple fully customizable form enhancement plugin for in-field label support.",
+  "keywords": [
+    "form",
+    "forms",
+    "label",
+    "labels",
+    "usability",
+	"user experience",
+    "ux",
+    "bootstrap"
+  ],
+  "version": "1.0.9",
+  "author": {
+    "name": "Andrea Pace",
+    "email" : "dev@andreapace.net",
+    "url": "http://andreapace.net"
+  },
+  "maintainers": [
+    {
+      "name": "Andrea Pace",
+      "email": "dev@andreapace.net"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "homepage": "http://andreapace.co.uk/labelinplace",
+  "demo": "http://andreapace.co.uk/labelinplace/examples.html",
+  "issues": "https://github.com/andreapace/labelinplace/issues",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}
