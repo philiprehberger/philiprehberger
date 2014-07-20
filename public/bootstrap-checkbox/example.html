@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <title>Three state checkbox for Twitter Bootstrap</title>
+  <link rel="stylesheet" type="text/css" media="all" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap-checkbox.css" />
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="js/bootstrap-checkbox.js" charset="utf-8"></script>
+</head>
+<body>
+<h4>
+  Basic checkbox
+</h4>
+<input id="checkbox1" type="checkbox" value="1">
+<script>
+  $('#checkbox1').checkbox();
+</script>
+
+<h4>
+  Three state checkbox
+</h4>
+<input id="checkbox2" type="checkbox" value="1">
+<script>
+  $('#checkbox2').checkbox({label:'#label1'}).chbxChecked(null);
+</script>
+
+<h4>
+  check event
+</h4>
+<input id="checkbox-parent" type="checkbox" value="state"> parent<br/>
+&nbsp; <input class="checkbox-child" type="checkbox" value="child1"> child1<br/>
+&nbsp; <input class="checkbox-child" type="checkbox" value="child2"> child2<br/>
+&nbsp; <input class="checkbox-child" type="checkbox" value="child3"> child3
+<script>
+  var welChild = $('.checkbox-child').checkbox();
+  var welParent = $('#checkbox-parent').checkbox();
+
+  // check event on parent checkbox
+  welParent.on('check', function(e){
+    // remove ambiguous;
+    welParent.chbxChecked(e.checked);
+    welChild.each(function(i, element) {
+      $(element).chbxChecked(e.checked);
+    });
+  });
+
+  // check event on child checkbox
+  welChild.on('check', function(e) {
+    var bAnd = true, bOr = false;
+    welChild.each(function(i, element){
+      var bChecked = $(element).chbxChecked();
+      bAnd = bAnd && bChecked, bOr = bOr || bChecked;
+    });
+
+    var bChecked = bAnd === true || (bAnd === false && bOr === false ? false : null);
+    welParent.chbxChecked(bChecked);
+  });
+</script>
+<h4>
+  Label option
+</h4>
+<input id="checkbox4" type="checkbox" value="1">&nbsp;<span id="label">label</span>
+<script>
+  $('#checkbox4').checkbox({label:'#label'});
+</script>
+<h4>
+  Change value
+</h4>
+<input id="checkbox5" type="checkbox" value="1">
+value: <span id="value"></span><br/>
+<a id="change-value" class="btn btn-mini"><i>Change Value</i></a>
+<script>
+  var welCheckbox5 = $('#checkbox5').checkbox();
+  $('#value').html(welCheckbox5.chbxVal());
+
+  $('#change-value').on('click', function(){
+    var value = parseInt(welCheckbox5.chbxVal()) + 1;
+    welCheckbox5.chbxVal(value);
+    $('#value').html(welCheckbox5.chbxVal());
+  });
+</script>
+<h4>
+  Change check state
+</h4>
+<input id="checkbox6" type="checkbox" value="1">
+checked: <span id="checked"></span><br/>
+<a id="change-checked" class="btn btn-mini"><i>Change Checked</i></a>
+<script>
+  var welCheckbox6 = $('#checkbox6').checkbox();
+  $('#checked').html(welCheckbox6.chbxChecked()+"");
+
+  $('#change-checked').on('click', function(){
+    var checked = !welCheckbox6.chbxChecked();
+    welCheckbox6.chbxChecked(checked);
+    $('#checked').html(welCheckbox6.chbxChecked()+"");
+  });
+</script>
+</body>
+</html>
