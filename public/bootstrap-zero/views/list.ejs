@@ -1,0 +1,47 @@
+    
+    <a href="https://github.com/iatek/bootstrap-zero"><img style="position: fixed; top: 50px; right: 0; border: 0; z-index: 1201;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a> 
+    
+    <div id="masthead">  
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-7">
+              <h1>BootstrapZero <p class="lead"><span style="color:#CCFF33;">+Free</span> Themes and Templates for Bootstrap</p></h1>
+            </div>
+            <div class="col-sm-5">
+                <!-- ad space -->
+                <div class="pull-right well well-lg"> 
+                  <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/55998/azcarbon_2_1_0_HORIZDARK"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+                </div>
+            </div>
+          </div>
+      </div><!-- /cont -->
+    </div>
+    
+    <div class="container" id="main">
+	    <div class="row">
+      		<div class="col-md-12">
+      			<h2><%=utils.capitalize(tag)%> Templates</h2>
+                <p>Kickstart your Bootstrap project with these free `<%=tag%>` templates and themes.</p>
+                <hr>
+      		</div>
+      	</div>
+      	<div class="row" id="listTemplates">
+      	    <% for(i in templates) {%>
+  			<div class="col-sm-4">
+              	<div class="panel panel-default">
+                  	<div class="panel-heading"><h3><a href="/bootstrap-template/<%=templates[i].title.toLowerCase().replace(/\s/g,"-")%>"><%=templates[i].title%></h3></a></div>
+                	<div class="panel-body"><a href="/bootstrap-template/<%=templates[i].title.toLowerCase().replace(/\s/g,"-")%>"><img data-original="<%=templates[i].imgUrl%>" title="<%=templates[i].tags%>,bootstrap template" class="img-responsive" /></a></div>
+                	<div class="panel-footer"><strong><%=templates[i].short%></strong></div>
+                </div>              
+      		</div>
+      		<% } %>
+        </div>
+        <div class="text-center"><ul class="pagination pager" id="pagerTemplates"></ul></div>
+        <div class="row">
+      		<div class="col-md-12">
+                <a class="pull-right" href="http://www.bootply.com/tagged/<%=tag%>" rel="nofollow" target="ext">Bootstrap <b><%=tag%></b> snippets &amp; examples at Bootply</a>
+                <a href="http://bootstrapbay.com/category/admin-dashboard?ref=skelly" rel="nofollow" target="_ext">More <b><%=tag%></b> themes at BootstrapBay</a>
+      		</div>
+      	</div>
+    </div>
+    
